@@ -342,14 +342,25 @@
                                     <input id="website" class="w3-input w3-border" type="url" v-model="work.website">
                                     <small id="websiteHelp" class="form-help text-muted">Company website.</small>
                                 </p>
+                                 <!-- 
+                                <card-header v-bind:label="skill.name" v-bind:id="s_index" v-on:delete-clicked="deleteClicked" v-on:move-up-clicked="moveUpClicked" v-on:move-down-clicked="moveDownClicked"></card-header>
+                                 -->
                                 <p>
+                                    
                                     <label for="startDate" class="w3-text-blue"><b>Start Date</b></label>
+                                   
+                                    <custom-date-month-input class="w3-input w3-border" v-bind:value="work.startDate" v-bind:localid="'startDate'" 
+                                    v-bind:id="'work.startDate'" v-bind:storageid="'sections.work[' + w_index + '].startDate'" 
+                                    v-model="work.startDate" required></custom-date-month-input>
+                                   <!--
                                     <input id="startDate" class="w3-input w3-border" type="month" v-model="work.startDate" required>
+                                    -->
                                     <small id="startDateHelp" class="form-help text-muted">Date you started in the position.</small>
                                 </p>
                                 <p>
                                     <label for="endDate" class="w3-text-blue"><b>End Date</b></label>
-                                    <input id="endDate" class="w3-input w3-border" type="month" v-model="work.endDate">
+                                    <input id="endDate" class="w3-input w3-border" type="date"  v-if="work.endDate.length > 8" v-model="work.endDate">
+                                    <input id="endDate" class="w3-input w3-border" type="month"  v-else v-model="work.endDate">
                                     <small id="endDateHelp" class="form-help text-muted">Date you finished in the position (leave blank if you are still currently in it).</small>
                                 </p>
                                 <p>
@@ -394,6 +405,8 @@
                 </div>
             </div>
         </template>
+
+
 
 
 
@@ -1268,6 +1281,24 @@
         </template>
 
 
+        <template type="text/x-template" id="custom-date-month-input-template" lang="html">
+
+                <input 
+                v-bind:id="localid"
+                class="w3-input w3-border" 
+                type="date" 
+                v-model="id"
+                v-if="value.length > 8" />
+                <input 
+                v-bind:id="localid"
+                class="w3-input w3-border" 
+                v-model="id"
+                type="month" 
+                v-else />
+               <!-- -->
+            
+        </template>
+
 
         <template type="text/x-template" id="sorted-input-item-template" lang="html">
             <div id="sorted-input-item-root">
@@ -1370,6 +1401,7 @@
         <script type="text/javascript" src="components/preview_resume.js"></script>
         <script type="text/javascript" src="components/preview_single_field.js"></script>
         <script type="text/javascript" src="components/card_header.js"></script>
+        <script type="text/javascript" src="components/custom_date_month_input.js"></script>
         <script type="text/javascript" src="components/import.js"></script>
         <script type="text/javascript" src="components/export.js"></script>
         <script type="text/javascript" src="components/about.js"></script>

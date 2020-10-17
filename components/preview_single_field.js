@@ -4,7 +4,6 @@ Vue.component("preview-field", {
 	props: [
 		'label',
 		'value',
-
 		'dataType',
 		'format',
 	],

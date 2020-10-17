@@ -32,7 +32,6 @@ var router = new VueRouter({
 	]
 });
 
-
 var app = new Vue({
 	el: '#app',
 	router: router,
@@ -484,3 +483,25 @@ var app = new Vue({
 		// }
     }
 });
+
+///////////////////////////////////
+// LIBRARY FUNCTIONS
+
+function profileLoadSavedData(what,where){
+	var savedData = storage.getLocalStorage(what);
+
+		if (savedData)
+		{
+			// Data previously saved.
+			where.data = savedData;
+
+			for (var key in savedData) 
+			{
+				if (savedData.hasOwnProperty(key)) 
+				{
+					//console.log(key + " > " + savedData[key]);
+					where[key] = savedData[key];
+				}
+			}
+		}
+}

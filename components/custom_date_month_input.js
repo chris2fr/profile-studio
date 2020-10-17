@@ -1,10 +1,20 @@
-var sectionMetaComponent = {
-	template: '#section-meta-template',
+Vue.component("custom-date-month-input", {
+	template: '#custom-date-month-input-template',
+
+	props: [
+		'localid',
+		"storageid",
+		"id",
+		"value"
+	],
 
 	mounted: function()
 	{
-		profileLoadSavedData("section.meta",this)
-
+		profileLoadSavedData(this.storageid,this);
+		this[this.localid] = this.value;
+		this[this.storageid] = this.value;
+		console.log(this.storageid  + " > " + this[this.storageid])
+		console.log(this.localid + " > " + this[this.localid]);
 	},
 
 	destroyed: function()
@@ -18,7 +28,6 @@ var sectionMetaComponent = {
 
 		};
 	},
-
 	watch: {
 		/**
 		 * Watch all data for changes
@@ -31,16 +40,13 @@ var sectionMetaComponent = {
 				//storage.setLocalStorage("section.basics", val);
 
 				//this.$root.sections.basics = val;
+				
 			},
 			deep: true
 		}
 	},
-	
+
 	methods: {
-		addProfile: function()
-		{
-			var item = models.newDefaultMeta();
-			this.$root.sections.meta.profiles.push(item);
-		}
+
 	}
-};
+});
