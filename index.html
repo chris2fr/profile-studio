@@ -1294,6 +1294,10 @@
                     Past existing resume JSON and import to continue editing.
                 </p>
                 <textarea rows="20" class="w3-input w3-border" type="text" v-model="json"></textarea>
+                <p>
+                    Path (or maybe URL) to JSON file.
+                </p>
+                <input v-model="filepathjson"/>
                 <button class="w3-btn w3-white w3-border w3-border-blue w3-round" v-on:click="importJson">Import</button>
             </div>
         </template>

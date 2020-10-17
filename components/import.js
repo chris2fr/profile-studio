@@ -30,9 +30,14 @@ var importComponent = {
 		importJson: function()
 		{
 			console.log("import JSON: " + this.json);
+			console.log("import filePathJSON: " + this.filepathjson);
 
-			var data = JSON.parse(this.json);
-
+			if (this.filepathjson) {
+				import data from this.filepathjson;
+			} else {
+				var data = JSON.parse(this.json);
+			}
+			
 			// Reset first
 			this.$root.sections = models.newDefaultSections();
 
