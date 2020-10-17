@@ -4,6 +4,7 @@
  */
 //------------------------------------------------------------------------------------------
 
+
 /**
  * Define all the routes in the application/
  */
@@ -60,7 +61,7 @@ var app = new Vue({
     created()
 		{
 			this.sections = models.newDefaultSections();
-			console.log("this.sections=", this.sections);
+			// console.log("this.sections=", this.sections);
 
 			//-- Register all components
 			pageComponents.registerComponents();
