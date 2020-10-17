@@ -12,9 +12,7 @@ Vue.component("custom-date-month-input", {
 	{
 		profileLoadSavedData(this.storageid,this);
 		this[this.localid] = this.value;
-		this[this.storageid] = this.value;
-		console.log(this.storageid  + " > " + this[this.storageid])
-		console.log(this.localid + " > " + this[this.localid]);
+		//console.log(this.localid + " > " + this[this.localid]);
 	},
 
 	destroyed: function()
@@ -24,29 +22,22 @@ Vue.component("custom-date-month-input", {
 
 	data: function()
 	{
+		var ret = {}
+		ret[this.localid] = this[this.localid]
 		return {
-
+			ret
 		};
-	},
-	watch: {
-		/**
-		 * Watch all data for changes
-		 */
-		$data: {
-			handler: function(val, oldVal) 
-			{
-				// Save the data to localStorage
-				//NOTE: I'm initially not concerned about performance here/
-				//storage.setLocalStorage("section.basics", val);
-
-				//this.$root.sections.basics = val;
-				
-			},
-			deep: true
-		}
 	},
 
 	methods: {
+		profileUpdateDate: function(event)
+		{
+			storage.setLocalStorage(this.storageid,this.$el.value);
+			this.value = this.$el.value;
 
+			//this[this.localid] = this.$el.value;
+			//console.log(this.$el.value);
+			//console.log(this.localid + ">" + this[this.localid]);
+		},
 	}
 });

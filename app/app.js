@@ -499,7 +499,7 @@ function profileLoadSavedData(what,where){
 			{
 				if (savedData.hasOwnProperty(key)) 
 				{
-					//console.log(key + " > " + savedData[key]);
+					console.log(key + " > " + savedData[key]);
 					where[key] = savedData[key];
 				}
 			}

@@ -1287,12 +1287,14 @@
                 v-bind:id="localid"
                 class="w3-input w3-border" 
                 type="date" 
-                v-model="id"
+                :value="value"
+                v-on:input="profileUpdateDate"
                 v-if="value.length > 8" />
                 <input 
                 v-bind:id="localid"
                 class="w3-input w3-border" 
-                v-model="id"
+                :value="value"
+                v-on:input="profileUpdateDate"
                 type="month" 
                 v-else />
                <!-- -->
